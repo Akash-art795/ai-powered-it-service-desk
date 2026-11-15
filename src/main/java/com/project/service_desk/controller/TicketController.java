@@ -3,6 +3,7 @@ package com.project.service_desk.controller;
 import com.project.service_desk.dto.TicketRequestDTO;
 import com.project.service_desk.dto.TicketResponseDTO;
 import com.project.service_desk.dto.TicketStatusUpdateDTO;
+import com.project.service_desk.dto.TicketWithdrawalDTO;
 import com.project.service_desk.service.TicketService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -53,4 +54,23 @@ public class TicketController {
         service.deleteTicketById(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PatchMapping("/tickets/{id}/withdraw")
+    public ResponseEntity<TicketResponseDTO>withdrawalTicket(@PathVariable(name = "id") long id,@Valid @RequestBody TicketWithdrawalDTO withdrawalDTO){
+       TicketResponseDTO withdrawal =  service.withdrawTicket(id,withdrawalDTO);
+        return ResponseEntity.ok(withdrawal);
+    }
+
+    @PatchMapping("/tickets/{id}/withdraw/approve")
+    public ResponseEntity<TicketResponseDTO>withdrawalApproval(@PathVariable(name = "id") long id){
+        TicketResponseDTO withdrawal = service.approveWithdrawal(id);
+        return ResponseEntity.ok(withdrawal);
+    }
+
+    @PatchMapping("/tickets/{id}/withdraw/reject")
+    public ResponseEntity<TicketResponseDTO>withdrawalReject(@PathVariable(name = "id") long id){
+        TicketResponseDTO withdrawal = service.rejectWithdrawal(id);
+        return ResponseEntity.ok(withdrawal);
+    }
+
 }

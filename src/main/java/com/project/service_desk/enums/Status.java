@@ -1,5 +1,5 @@
 package com.project.service_desk.enums;
 
 public enum Status {
-    IN_PROGRESS,RESOLVED,CLOSED,OPEN
+    IN_PROGRESS,COMPLETED,WITHDRAWAL_REQUESTED,OPEN,CANCELLED,ASSIGNED
 }

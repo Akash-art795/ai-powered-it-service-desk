@@ -26,6 +26,10 @@ public class TicketMapper {
         ticketResponseDTO.setPriority(ticket.getPriority());
         ticketResponseDTO.setStatus(ticket.getStatus());
         ticketResponseDTO.setCreatedAt(ticket.getCreatedAt());
+        ticketResponseDTO.setWithdrawalApproval(ticket.getWithdrawalApproval());
+        ticketResponseDTO.setWithdrawalReason(ticket.getWithdrawalReason());
+        ticketResponseDTO.setWithdrawalRequestedAt(ticket.getWithdrawalRequestedAt());
+        ticketResponseDTO.setWithdrawalReviewedAt(ticket.getWithdrawalReviewedAt());
         return ticketResponseDTO;
     }
 }
